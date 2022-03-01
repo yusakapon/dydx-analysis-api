@@ -21,3 +21,14 @@ DB_DATABASE=db_local
 DB_USERNAME=db_local
 DB_PASSWORD=db_local
 ```
+
+# ブラウザからのアクセス方法
+`0.0.0.0:80` をブラウザから叩くと、画面表示されます。
+
+# DB操作方法
+コンテナが立ち上がっている状態で、以下を実行。
+```
+docker exec -it db sh
+mysql -h 127.0.0.1 -u db_local -p'db_local' db_local
+```
+※ DBに対し破壊的変更を加えたい場合は、rootユーザでアクセスしてください。(ユーザ名・パスワード共に`root`)
