@@ -6,6 +6,10 @@ jobs:
   laravel-tests:
     name: laravel phpunit test
     runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./src
 
     services:
       mysql:
@@ -28,7 +32,9 @@ jobs:
         env:
           cache-name: cache-composer
         with:
-          path: ./vendor
+          # defaults.runはrunステップのみ影響を与えるので、uses使用時はsrc/から指定する
+          # https://pc.atsuhiro-me.net/entry/2021/02/04/144553
+          path: ./src/vendor
           key: ${{ runner.os }}-composer-${{ env.cache-name }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-${{ env.cache-name }}-
