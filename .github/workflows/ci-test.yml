@@ -1,9 +1,9 @@
-name: Laravel-Test
+name: CI-Test
 
 on: [push]
 
 jobs:
-  laravel-tests:
+  ci-tests:
     name: laravel phpunit test
     runs-on: ubuntu-20.04
     defaults:
